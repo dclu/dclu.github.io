@@ -6,33 +6,75 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script> document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js '; </script>
+    <link rel="stylesheet" href="https://RaymondHLIU.github.io/assets/css/academicons.css"/>
     <title>Da-Chuan Lu's homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    <script src="main.js"></script>
+
   </head>
   <body>
 
-
+    <!-- build the head bar -->
     <div class="masthead">
       <div class="masthead__inner-wrap">
          <div class="masthead__menu">
             <nav id="site-nav" class="greedy-nav">
-               <button>
-                  <div class="navicon"></div>
-               </button>
                <ul class="visible-links">
-                  <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://RaymondHLIU.github.io/">Da-Chuan Lu's Homepage</a></li>
+                  <li class="masthead__menu-item masthead__menu-item--lg"><a href="index.html">Da-Chuan Lu's Homepage</a></li>
+                  <!-- 
                   <li class="masthead__menu-item"><a href="publication.html">Publications</a></li>
                   <li class="masthead__menu-item"><a href="teaching.html">Teaching</a></li>
                   <li class="masthead__menu-item"><a href="fun.html">Fun</a></li>
+                  -->
                </ul>
-               <ul class="hidden-links hidden"></ul>
+               <!-- <ul class="hidden-links hidden"></ul> -->
             </nav>
          </div>
       </div>
    </div>
+
+   <!-- main body -->
+   <div id="main" role="main">
+      <div class="sidebar sticky">
+        <div itemscope itemtype="http://schema.org/Person">
+          <!-- <div class="author__avatar"> <img src="https://RaymondHLIU.github.io/images/haoliu.jpg" class="author__avatar" alt="Dr. Hao Liu"></div> -->
+          <div class="author__content">
+             <h3 class="author__name">Da-Chuan Lu</h3>
+             <p class="author__bio">University of California, <br>San Diego</p>
+          </div>
+          <div class="author__urls-wrapper">
+             <ul class="author__urls social-icons">
+                <li><a href="mailto:dclu137@gmail.com">Email</a></li>
+                <li><a href="https://scholar.google.com/citations?user=wLi-G-cAAAAJ&hl=en">Google Scholar</a></li>
+             </ul>
+          </div>
+      </div>
+    </div>
+
+    <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="">
+      <meta itemprop="description" content="About me">
+      <div class="page__inner-wrap">
+         <header>
+            <h1 class="page__title" itemprop="headline"></h1>
+         </header>
+         <section class="page__content" itemprop="text">
+          <p>
+            My interests mainly lie in condensed matter systems, where rich
+            phenomena emerge from fundamental rules and elements which have deep
+            connections to high energy theory and mathematics. Recently, I've been
+            focused on deconfined quantum criticality, topological phase
+            transitions. Meanwhile, I'm also learning duality web of QFTs, TQFT,
+            characterstic class and knot theory.
+          </p>
+          <p>Website is under construction.</p>
+         </section>
+         <footer class="page__meta"></footer>
+      </div>
+   </article>
+  </div>
+  
 
 
 
