@@ -208,8 +208,23 @@ section.dialog-off-canvas-main-canvas{
     font-size: 50%;
 }
 
+/* tag color */
 .tagp{
     color: rgb(99, 99, 99);
+}
+
+/* publication style */
+.publication li{
+    margin: 20px 0;
+}
+
+.bottom-footer{
+    height: 60px;
+    width: var(--post_w);
+}
+
+.teaching-list li{
+    margin: 20px 0;
 }
 
 ::selection {
