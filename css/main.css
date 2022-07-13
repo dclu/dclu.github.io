@@ -208,7 +208,9 @@ section.dialog-off-canvas-main-canvas{
     font-size: 50%;
 }
 
-
+.tagp{
+    color: rgb(99, 99, 99);
+}
 
 ::selection {
     color: rgb(255, 255, 255);
