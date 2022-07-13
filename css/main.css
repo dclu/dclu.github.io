@@ -48,10 +48,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     --post_w:65%
 }
 
-a{
+/* a{
     text-decoration:none;
     color:var(--primary-color);
-}
+} */
 
 /* font style */
 p{
@@ -107,6 +107,8 @@ header{
     height:72px;
     line-height:72px;
 }
+
+
 .site-name{
     font-size:var(--text-size-h4);
     font-weight:bold;
@@ -116,11 +118,22 @@ header{
     width:var(--sidebar_w);
 }
 
+.site-name a{
+    text-decoration:none;
+    color:var(--primary-color);
+}
+
 /* menu */
 menu{
     position:sticky;
     top:72px;
 }
+
+menu a{
+    text-decoration:none;
+    color:var(--primary-color);
+}
+
 #sidebar{
     width:var(--sidebar_w);
     padding:0 24px 0;
@@ -150,6 +163,14 @@ main .posts{
     flex-wrap:wrap;
 }
 
+main .posts a{
+    text-decoration:none;
+    color:rgb(55, 55, 202);
+}
+
+main .posts a:hover{
+    text-decoration: underline;
+}
 
 section.dialog-off-canvas-main-canvas{
     display:flex;
