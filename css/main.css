@@ -223,8 +223,14 @@ section.dialog-off-canvas-main-canvas{
     width: var(--post_w);
 }
 
+.teaching-list{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .teaching-list li{
-    margin: 20px 0;
+    flex: 0 0 auto;
+    margin: 12px 0;
 }
 
 ::selection {
