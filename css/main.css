@@ -237,8 +237,19 @@ section.dialog-off-canvas-main-canvas{
     color: rgb(255, 255, 255);
     background: rgb(23, 23, 23);
   }
+  
+  /* tag style */
+  .ctag {
+    color:crimson;
+    background-color:#f1f1f1;
+    padding-left:4px;
+    padding-right:4px;
+  }
 
-
+  /*img style*/
+  img {
+    width: 40%;
+  }
 
 
   @media (max-width:768px){
