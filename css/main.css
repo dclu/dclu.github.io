@@ -257,6 +257,16 @@ section.dialog-off-canvas-main-canvas{
     margin: 12px 0;
 }
 
+.talk-list{
+    display: flex;
+    flex-direction: column
+}
+
+.talk-list li{
+    flex: 0 0 auto;
+    margin: 12px 0;
+}
+
 ::selection {
     color: rgb(255, 255, 255);
     background: rgb(23, 23, 23);
