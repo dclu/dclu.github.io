@@ -1,0 +1,94 @@
+{
+  "lu2025intrinsic": {
+    "categories": "hep-th",
+    "keywords": "Non-invertible symmetry, intrinsic SPT, mixed anomaly"
+  },
+  "lu2025strange": {
+    "categories": "cond-mat.str-el, hep-th",
+    "keywords": "Non-invertible symmetry protected topological phase, strange correlator, string order, entanglement spectrum"
+  },
+  "yang2025deconfined": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "DMRG, gapless SPT"
+  },
+  "lu2025symsets": {
+    "categories": "hep-th",
+    "keywords": "G-extension, G-crossed braided fusion category, Non-invertible symmetry, Fusion category"
+  },
+  "lu2024realizing": {
+    "categories": "cond-mat.str-el, hep-th",
+    "keywords": "Twisted lattice gauging, Non-invertible symmetry, Quantum spin chain"
+  },
+  "Lu:2024lzf": {
+    "categories": "hep-th",
+    "keywords": "G-ality, Non-invertible symmetry, Fusion category"
+  },
+  "Zeng:2024tuq": {
+    "categories": "cond-mat.str-el, SMG",
+    "keywords": "Optical conductivity, Green's function"
+  },
+  "Lu:2023emm": {
+    "categories": "cond-mat.str-el, SMG",
+    "keywords": "Fermi surface anomaly, loop group, phase space topological insulator, interaction reduced classification"
+  },
+  "Choi:2023vgk": {
+    "categories": "hep-th",
+    "keywords": "CFT, Non-invertible symmetry, Self-duality, Fusion category"
+  },
+  "Yang:2023aqo": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "DMRG, self-duality"
+  },
+  "Lu:2023cev": {
+    "categories": "cond-mat.str-el, SMG",
+    "keywords": "Fermi surface, Luttinger surface, non-Fermi liquid"
+  },
+  "Lu:2023mlc": {
+    "categories": "cond-mat.str-el, SMG",
+    "keywords": "La₃Ni₂O₇, Superconductivity, BCS-BEC crossover"
+  },
+  "Lu:2022zra": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "WZW, relative Chern-Simons, Grassmannian symmetry defect"
+  },
+  "Lu:2022qtc": {
+    "categories": "cond-mat.str-el, SMG",
+    "keywords": "Fermi surface anomaly, interaction reduced classification"
+  },
+  "Lu:2022ver": {
+    "categories": "hep-th",
+    "keywords": "CFT, Topological defect line, Triality, Fusion category"
+  },
+  "Lu:2022hcq": {
+    "categories": "cond-mat.str-el",
+    "keywords": "Trilayer graphene, van Hove singularity, Renormalization Group"
+  },
+  "Lu:2021ucu": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "QED3, QFT duality, Large-N, Renormalization Group"
+  },
+  "Huang:2019moo": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "1+1d DQCP, DMRG, Bosonization"
+  },
+  "Wang:2019jxs": {
+    "categories": "cond-mat.str-el, DQCP",
+    "keywords": "QED3, QMC, Parton construction"
+  },
+  "lv2019anomalous": {
+    "categories": "cond-mat.supr-con",
+    "keywords": "Superconductivity, Transport, Fe-based superconductor"
+  },
+  "bao2018visualizing": {
+    "categories": "cond-mat.str-el",
+    "keywords": "Superconductivity, d-vector, Quasiparticle-Interference"
+  },
+  "lu2018elliptical": {
+    "categories": "cond-mat.str-el",
+    "keywords": "Superconductivity, vortex, Fe-based superconductor"
+  },
+  "li2017nematic": {
+    "categories": "cond-mat.supr-con",
+    "keywords": "Nematic superconductivity, Transport, Fe-based superconductor"
+  }
+}
