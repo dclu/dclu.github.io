@@ -2,16 +2,41 @@
 <html lang="en">
   <head>
     <meta charset=UTF-8>
-    <title>Da-Chuan Lu's Homepage</title>
+    <title>Da-Chuan Lu - Teaching</title>
 
-    <meta name="description" content="Da-Chuan Lu's homepage">
-    <meta name="keywords" content="Theoretical physics, Condensed matter physics, High energy physics">
+    <meta name="description" content="Da-Chuan Lu's teaching experience - 5 years as Teaching Assistant at UC San Diego (2018-2023) covering Quantum Physics, Condensed Matter Physics, and Laboratory courses">
+    <meta name="keywords" content="Da-Chuan Lu, teaching, physics education, quantum mechanics, condensed matter, teaching assistant, UCSD, UC San Diego">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://kit.fontawesome.com/1325b43cd4.js" crossorigin="anonymous"></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Da-Chuan Lu",
+      "jobTitle": "Postdoctoral Fellow",
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "University of California San Diego"
+      },
+      "hasOccupation": {
+        "@type": "Role",
+        "roleName": "Teaching Assistant",
+        "startDate": "2018-09",
+        "endDate": "2023-12",
+        "location": {
+          "@type": "Organization",
+          "name": "UC San Diego Department of Physics"
+        }
+      }
+    }
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <section class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
 
@@ -61,40 +86,50 @@
         </div>
     </menu>
 
-    <main role="main">
+    <main role="main" id="main-content">
         <section class="posts">
             <article>
-                <h2 id="teach">Teaching</h2>
-            
-                <h4>UC San Diego 2018-2023 Teaching assistant</h4>
+                <h2>Teaching Experience</h2>
+                <h3>UC San Diego (2018-2023)</h3>
+                <p>Teaching Assistant, Department of Physics</p>
+
                 <details open>
                     <summary>
-                      List of classes
+                      Course List (17 courses)
                       <span class="icon">▼</span>
                     </summary>
-                    <ul class="teaching-list">
-                        <li>FA18 TA PHYS 130B - Quantum Physics II</li>
-                        <li>WI19 TA PHYS 130B - Quantum Physics II</li>
-                        <li>SP19 TA PHYS 130A - Quantum Physics I</li>
-                        <li>S119 TA PHYS 1AL - Mechanics Laboratory</li>
-                        <li>FA19 TA PHYS 130B - Quantum Physics II</li>
-                        <li>WI20 TA PHYS 212B - Quantum Mechanics II</li>
-                        <li>SP20 TA PHYS 130A - Quantum Physics I</li>
-                        <li>FA20 TA PHYS 130B - Quantum Physics II</li>
-                        <li>WI21 TA PHYS 130C - Quantum Physics III</li>
-                        <li>SP21 TA PHYS 130A - Quantum Physics I</li>
-                        <li>FA21 TA PHYS 130B - Quantum Physics II</li>
-                        <li>WI22 TA PHYS 2CL - Phys Lab-Elec&Magnetism</li>
-                        <li>SP22 TA PHYS 130A - Quantum Physics I</li>
-                        <li>FA22 TA PHYS 212A - Quantum Mechanics I</li>
-                        <li>WI23 TA PHYS 152A - Condensed Matter I</li>
-                        <li>SP23 TA PHYS 130A - Quantum Physics I</li>
-                        <li>FA23 TA PHYS 1BL - Electromagnetism Lab</li>
+                    <ul class="event-list">
+                        <li><strong>Fall 2023</strong> - PHYS 1BL: Electromagnetism Lab</li>
+                        <li><strong>Spring 2023</strong> - PHYS 130A: Quantum Physics I</li>
+                        <li><strong>Winter 2023</strong> - PHYS 152A: Condensed Matter I</li>
+                        <li><strong>Fall 2022</strong> - PHYS 212A: Quantum Mechanics I (Graduate)</li>
+                        <li><strong>Spring 2022</strong> - PHYS 130A: Quantum Physics I</li>
+                        <li><strong>Winter 2022</strong> - PHYS 2CL: Physics Lab - Electricity & Magnetism</li>
+                        <li><strong>Fall 2021</strong> - PHYS 130B: Quantum Physics II</li>
+                        <li><strong>Spring 2021</strong> - PHYS 130A: Quantum Physics I</li>
+                        <li><strong>Winter 2021</strong> - PHYS 130C: Quantum Physics III</li>
+                        <li><strong>Fall 2020</strong> - PHYS 130B: Quantum Physics II</li>
+                        <li><strong>Spring 2020</strong> - PHYS 130A: Quantum Physics I</li>
+                        <li><strong>Winter 2020</strong> - PHYS 212B: Quantum Mechanics II (Graduate)</li>
+                        <li><strong>Fall 2019</strong> - PHYS 130B: Quantum Physics II</li>
+                        <li><strong>Summer 2019</strong> - PHYS 1AL: Mechanics Laboratory</li>
+                        <li><strong>Spring 2019</strong> - PHYS 130A: Quantum Physics I</li>
+                        <li><strong>Winter 2019</strong> - PHYS 130B: Quantum Physics II</li>
+                        <li><strong>Fall 2018</strong> - PHYS 130B: Quantum Physics II</li>
                     </ul>
                   </details>
-                
+
+                <footer class="page-footer">
+                    <p class="last-updated">Last updated: <span id="auto-date"></span></p>
+                </footer>
+
+                <script>
+                    const date = new Date(document.lastModified);
+                    document.getElementById('auto-date').textContent =
+                        date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                </script>
+
             </article>
-            <div class="bottom-footer"></div>
         </section>
     </main>
 

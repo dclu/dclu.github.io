@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset=UTF-8>
-    <title>Da-Chuan Lu's Homepage</title>
+    <title>Da-Chuan Lu - Fun</title>
 
-    <meta name="description" content="Da-Chuan Lu's homepage">
-    <meta name="keywords" content="Theoretical physics, Condensed matter physics, High energy physics">
+    <meta name="description" content="Da-Chuan Lu's personal interests and hobbies - featuring Miso the dog and rock climbing adventures">
+    <meta name="keywords" content="Da-Chuan Lu, hobbies, rock climbing, Joshua Tree, hiking, outdoor activities">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://kit.fontawesome.com/1325b43cd4.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <section class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
 
@@ -60,27 +61,36 @@
         </div>
     </menu>
 
-    <main role="main">
+    <main role="main" id="main-content">
         <section class="posts">
             <article>
-                <h2 id="fun">Fun</h2>
+                <h2>Fun</h2>
                 <ul class="funs-list">
                     <li>
-                        <h4>Miso - my cute dog</h4>
-                        <img src="/fig/miso.jpg" alt="Miso">
+                        <h3>Miso - my cute dog</h3>
+                        <img src="/fig/miso.jpg" alt="Miso at Anza-Borrego Desert Palms Canyon">
                         <p>Miso at Anza-Borrego Desert Palms Canyon!</p>
 
                     </li>
 
                     <li>
-                        <h4>Rock climbing</h4>
-                        <img src="/fig/climb.jpg" alt="climb">
-                        <p>I enjoy climbing during my spare time. This is at Joshua tree NP!</p>
+                        <h3>Rock climbing</h3>
+                        <img src="/fig/climb.jpg" alt="Rock climbing at Joshua Tree National Park">
+                        <p>I enjoy climbing during my spare time. This is at Joshua Tree NP!</p>
 
                     </li>
                 </ul>
-                <br>
-                
+
+                <footer class="page-footer">
+                    <p class="last-updated">Last updated: <span id="auto-date"></span></p>
+                </footer>
+
+                <script>
+                    const date = new Date(document.lastModified);
+                    document.getElementById('auto-date').textContent =
+                        date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                </script>
+
             </article>
 
         </section>
