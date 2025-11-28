@@ -573,6 +573,35 @@ details {
   }
 
   /* Responsive adjustments for new sections */
+  /* Fun page grid */
+  .fun-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 24px 0;
+  }
+
+  .fun-item {
+    text-align: center;
+  }
+
+  .fun-item h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .fun-item img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .fun-item p {
+    margin: 0;
+  }
+
   @media (max-width: 768px) {
     .profile-section {
       flex-direction: column;
@@ -592,5 +621,14 @@ details {
     .event-list li,
     .news-list li {
       font-size: 14px;
+    }
+
+    .fun-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .fun-item img {
+      max-width: 100%;
     }
   }
