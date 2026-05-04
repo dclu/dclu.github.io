@@ -1,4 +1,12 @@
 {
+  "Lu:2026rhb": {
+    "categories": "cond-mat.str-el",
+    "keywords": "Non-invertible symmetry, ZX calculus, Hopf algebra"
+  },
+  "Scheer:2025zoo": {
+    "categories": "cond-mat.str-el",
+    "keywords": "Quantum bootstrap, duality"
+  },
   "lu2025intrinsic": {
     "categories": "hep-th",
     "keywords": "Non-invertible symmetry, intrinsic SPT, mixed anomaly"
