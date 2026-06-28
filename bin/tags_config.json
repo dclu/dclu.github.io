@@ -1,4 +1,8 @@
 {
+  "chen2026spontaneous": {
+    "categories": "cond-mat.str-el, hep-th",
+    "keywords": "Non-invertible symmetry, spontaneous symmetry breaking, generalized gauging, beyond-Landau transition"
+  },
   "Lu:2026rhb": {
     "categories": "cond-mat.str-el",
     "keywords": "Non-invertible symmetry, ZX calculus, Hopf algebra"
@@ -98,5 +102,13 @@
   "li2017nematic": {
     "categories": "cond-mat.supr-con",
     "keywords": "Nematic superconductivity, Transport, Fe-based superconductor"
+  },
+  "sun2017intrinsic": {
+    "categories": "cond-mat.supr-con",
+    "keywords": "Superconductivity, transport, Fe-based superconductor"
+  },
+  "lu2017vortex": {
+    "categories": "cond-mat.supr-con",
+    "keywords": "Vortex dynamics, time-dependent Ginzburg-Landau, pinning"
   }
 }
