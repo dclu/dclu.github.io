@@ -490,6 +490,13 @@ details {
   }
 
   /* Profile section */
+  .job-market-note {
+    margin: -12px 0 22px;
+    color: #2c5282;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   .profile-section {
     display: flex;
     gap: 30px;
@@ -563,6 +570,14 @@ details {
     color: #2d3748;
     font-size: 18px;
     line-height: 1.65;
+  }
+
+  .research-summary-note {
+    max-width: 52rem;
+    margin-top: 6px;
+    color: #718096;
+    font-size: 13px;
+    font-style: italic;
   }
 
   .research-highlight-item {
