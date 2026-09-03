@@ -95,7 +95,8 @@ The citation key (e.g., `lu2025intrinsic`) matches the BibTeX entry identifier.
 ### Step 4: Run Conversion Script
 ```bash
 cd bin
-python3 bibtex_to_html.py ../pub.bib --config tags_config.json --output publications_output.html
+python3 bibtex_to_html.py ../pub.bib --config tags_config.json \
+  --output publications_output.html --page ../publication.html
 ```
 
 **Script Options:**
@@ -104,10 +105,8 @@ python3 bibtex_to_html.py ../pub.bib --config tags_config.json --output publicat
 - `--verbose`: Show detailed processing information
 
 ### Step 5: Update publication.html
-1. Open the generated `publications_output.html`
-2. Copy the `<ol class="publication">` content
-3. Replace the corresponding section in `publication.html`
-4. Verify the output in a browser
+1. Pass `--page ../publication.html` when running the converter.
+2. Verify the updated page in a browser.
 
 ### Step 6: Commit Changes
 ```bash
@@ -123,7 +122,7 @@ git push
 - **Author formatting**: Automatically bolds "Da-Chuan Lu" (case-insensitive)
 - **Link generation**: Creates proper arXiv and DOI URLs
 - **Special character handling**: Converts LaTeX symbols to HTML
-- **Sorting**: Orders publications by year (newest first)
+- **Sorting**: Orders publications by exact date (newest first), with year/month/day fallbacks
 - **Tag integration**: Merges categories and keywords from config
 
 ### Dependencies

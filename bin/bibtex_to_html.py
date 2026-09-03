@@ -13,6 +13,7 @@ import re
 import json
 import sys
 import argparse
+import html
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 
@@ -64,7 +65,12 @@ class PublicationConverter:
         self.log(f"Found {len(bib_database.entries)} entries")
         return bib_database.entries
 
-    def format_author_name(self, author: str) -> str:
+    @staticmethod
+    def is_truthy(value: Optional[str]) -> bool:
+        """Return whether a BibTeX metadata flag should be treated as true."""
+        return str(value or '').strip().lower() in {'1', 'true', 'yes', 'y'}
+
+    def format_author_name(self, author: str, corresponding: bool = False) -> str:
         """
         Convert BibTeX author format to display format.
 
@@ -86,14 +92,17 @@ class PublicationConverter:
 
         # Clean up extra spaces
         name = ' '.join(name.split())
+        name = html.escape(name, quote=False)
 
-        # Bold Da-Chuan Lu (case-insensitive match)
+        # Bold Da-Chuan Lu (case-insensitive match), normalize known aliases,
+        # and place the corresponding-author marker inside the emphasis.
         if re.search(r'da-?chuan\s+lu', name, re.IGNORECASE):
-            name = f"<strong>{name}</strong>"
+            marker = '*' if corresponding else ''
+            name = f"<strong>Da-Chuan Lu{marker}</strong>"
 
         return name
 
-    def parse_authors(self, author_string: str) -> str:
+    def parse_authors(self, author_string: str, corresponding: bool = False) -> str:
         """
         Parse BibTeX author field and format for HTML.
 
@@ -107,7 +116,10 @@ class PublicationConverter:
         authors = [a.strip() for a in author_string.split(' and ')]
 
         # Format each author name
-        formatted_authors = [self.format_author_name(a) for a in authors]
+        formatted_authors = [
+            self.format_author_name(a, corresponding=corresponding)
+            for a in authors
+        ]
 
         # Join with comma-space
         return ', '.join(formatted_authors)
@@ -199,7 +211,7 @@ class PublicationConverter:
             venue_parts = []
 
             # Journal name (standardize common abbreviations)
-            journal_name = entry['journal']
+            journal_name = html.escape(entry['journal'], quote=False)
             journal_name = journal_name.replace('Physical Review B', 'Phys. Rev. B')
             journal_name = journal_name.replace('JHEP', 'JHEP')
             venue_parts.append(journal_name)
@@ -224,7 +236,7 @@ class PublicationConverter:
 
         # Case 4: Has journal but no DOI (older papers or non-standard venues)
         if 'journal' in entry:
-            venue_parts = [journal]
+            venue_parts = [html.escape(journal, quote=False)]
 
             # Add volume/pages if available
             if 'volume' in entry:
@@ -261,6 +273,8 @@ class PublicationConverter:
         Returns:
             Text with HTML formatting
         """
+        text = html.escape(text, quote=False)
+
         # Fix common patterns like $p$-ality → p-ality first
         text = re.sub(r'\$([^$]+)\$', r'\1', text)
 
@@ -310,6 +324,23 @@ class PublicationConverter:
 
         return categories, keywords
 
+    def get_sort_date(self, entry: Dict) -> Tuple[int, int, int]:
+        """Return an exact publication-date key with safe BibTeX fallbacks."""
+        date = entry.get('date', '')
+        match = re.match(r'^(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?', date)
+        if match:
+            return tuple(int(part or 0) for part in match.groups())
+
+        def numeric_field(name: str) -> int:
+            match = re.search(r'\d+', str(entry.get(name, '')))
+            return int(match.group()) if match else 0
+
+        return (
+            numeric_field('year'),
+            numeric_field('month'),
+            numeric_field('day'),
+        )
+
     def entry_to_html(self, entry: Dict) -> str:
         """
         Convert single BibTeX entry to HTML.
@@ -322,10 +353,15 @@ class PublicationConverter:
         """
         # Extract fields
         title = self.clean_latex(entry.get('title', 'Untitled'))
-        authors = self.parse_authors(entry.get('author', ''))
+        authors = self.parse_authors(
+            entry.get('author', ''),
+            corresponding=self.is_truthy(entry.get('corresponding')),
+        )
         venue = self.format_venue(entry)
-        link = self.get_publication_link(entry)
+        link = html.escape(self.get_publication_link(entry), quote=True)
         categories, keywords = self.get_tags(entry)
+        categories = html.escape(categories, quote=False)
+        keywords = html.escape(keywords, quote=False)
 
         # Build HTML
         html_lines = [
@@ -334,6 +370,14 @@ class PublicationConverter:
             f'        <p>{authors}</p>',
             f'        <p>{venue}</p>',
         ]
+
+        distinction = entry.get('distinction', '').strip()
+        if distinction:
+            distinction = html.escape(distinction, quote=False)
+            distinction = distinction.replace("Editors' Suggestion", "Editors’ Suggestion")
+            html_lines.append(
+                f'        <p class="publication-distinction">{distinction}</p>'
+            )
 
         # Add tags if available
         if categories or keywords:
@@ -360,8 +404,9 @@ class PublicationConverter:
         # Parse BibTeX
         entries = self.parse_bibtex(bibtex_file)
 
-        # Sort by year (descending - newest first)
-        entries.sort(key=lambda e: int(e.get('year', '0')), reverse=True)
+        # Sort by exact publication date (descending), falling back to
+        # year/month/day when an ISO date is unavailable.
+        entries.sort(key=self.get_sort_date, reverse=True)
 
         # Convert each entry
         html_entries = []
@@ -378,10 +423,34 @@ class PublicationConverter:
 
         # Write output
         output_path = Path(output_file)
-        output_path.write_text('\n'.join(html_output), encoding='utf-8')
+        html_text = '\n'.join(html_output)
+        output_path.write_text(f'{html_text}\n', encoding='utf-8')
 
         self.log(f"Output written to: {output_file}")
         print(f"✓ Converted {len(entries)} publications to {output_file}")
+        return html_text
+
+    def update_page(self, page_file: str, publication_list: str):
+        """Replace the generated publication list in a full HTML page."""
+        page_path = Path(page_file)
+        page_text = page_path.read_text(encoding='utf-8')
+        pattern = re.compile(
+            r'(?m)^(?P<indent>[ \t]*)<ol class="publication">.*?^\s*</ol>',
+            re.DOTALL,
+        )
+        match = pattern.search(page_text)
+        if not match:
+            raise ValueError(f'Publication list not found in {page_file}')
+
+        indent = match.group('indent')
+        indented_list = '\n'.join(
+            f'{indent}{line}' if line else line
+            for line in publication_list.splitlines()
+        )
+        updated_text = page_text[:match.start()] + indented_list + page_text[match.end():]
+        page_path.write_text(updated_text, encoding='utf-8')
+        self.log(f"Publication page updated: {page_file}")
+        print(f"✓ Updated publication list in {page_file}")
 
 
 def load_tags_config(config_file: str) -> Dict:
@@ -417,6 +486,8 @@ Examples:
     parser.add_argument('--config', help='Tags configuration JSON file')
     parser.add_argument('--output', default='publications_output.html',
                        help='Output HTML file (default: publications_output.html)')
+    parser.add_argument('--page',
+                       help='Optional full HTML page whose publication list should be replaced')
     parser.add_argument('--verbose', '-v', action='store_true',
                        help='Enable verbose output')
 
@@ -432,7 +503,9 @@ Examples:
 
     # Convert
     converter = PublicationConverter(tags_config=tags_config, verbose=args.verbose)
-    converter.convert(args.bibtex_file, args.output)
+    publication_list = converter.convert(args.bibtex_file, args.output)
+    if args.page:
+        converter.update_page(args.page, publication_list)
 
 
 if __name__ == '__main__':

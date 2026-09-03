@@ -19,12 +19,13 @@ pip install bibtexparser
 ### 2. Convert BibTeX to HTML
 
 ```bash
-python bibtex_to_html.py ../pub.bib --config tags_config.json --output publications_output.html
+python bibtex_to_html.py ../pub.bib --config tags_config.json \
+  --output publications_output.html --page ../publication.html
 ```
 
 ### 3. Update website
 
-Copy the generated HTML from `publications_output.html` and paste it into `../publication.html`.
+The `--page ../publication.html` option replaces the publication list in the full page while preserving the surrounding layout.
 
 ## Usage
 
@@ -39,7 +40,8 @@ This generates `publications_output.html` with default formatting.
 ### With Tags Configuration
 
 ```bash
-python bibtex_to_html.py ../pub.bib --config tags_config.json
+python bibtex_to_html.py ../pub.bib --config tags_config.json \
+  --page ../publication.html
 ```
 
 This includes arXiv categories and research keywords from `tags_config.json`.
@@ -158,9 +160,7 @@ The script automatically converts:
    ```
 
 5. **Update website**
-   - Copy content from `publications_output.html`
-   - Paste into `../publication.html`
-   - Replace the `<ol class="publication">` section
+   - Pass `--page ../publication.html` to update the page directly
 
 6. **Commit changes**
    ```bash

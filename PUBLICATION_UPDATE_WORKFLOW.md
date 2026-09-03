@@ -6,12 +6,11 @@ A step-by-step guide for updating publications on the website using BibTeX data.
 
 ```bash
 # Navigate to project directory
-cd /Users/dachuan/Documents/GitHub/dclu.github.io
+cd /Users/dachuan/Documents/Codex/SOP/dclu.github.io
 
 # Run conversion
-python3 bin/bibtex_to_html.py pub.bib --config bin/tags_config.json --output bin/publications_output.html
-
-# Copy output to publication.html
+python3 bin/bibtex_to_html.py pub.bib --config bin/tags_config.json \
+  --output bin/publications_output.html --page publication.html
 # Then commit and push changes
 ```
 
@@ -73,6 +72,7 @@ Add entries in this format:
 python3 bin/bibtex_to_html.py pub.bib \
   --config bin/tags_config.json \
   --output bin/publications_output.html \
+  --page publication.html \
   --verbose
 ```
 
@@ -103,10 +103,7 @@ open bin/publications_output.html
 
 ### Step 6: Update publication.html
 
-1. Open `publication.html` in your editor
-2. Find the `<ol class="publication">` section (starts around line 72)
-3. Copy the entire content from `bin/publications_output.html`
-4. Replace the existing publication list
+The conversion command's `--page publication.html` option replaces the existing `<ol class="publication">` block automatically.
 
 **Visual Studio Code / Cursor:**
 ```bash
