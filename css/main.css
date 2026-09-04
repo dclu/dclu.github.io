@@ -608,6 +608,12 @@ details {
     margin-top: 14px;
   }
 
+  .highlighted-reference,
+  .research-see-also {
+    display: block;
+    margin-top: 7px;
+  }
+
   /* News list */
   .news-list {
     list-style: none;
